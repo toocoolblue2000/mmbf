@@ -1,19 +1,21 @@
 package in.co.mmbf.loanstar;
 
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
 
-@ComponentScan("in.co.mmbf.mmbf")
-public class Application {
+@ComponentScan("in.co.mmbf.loanstar")
+@EnableAutoConfiguration
+public class Application extends SpringBootServletInitializer {
 
 	public static void main(String[] args) throws Exception {
-		// Set user password to "password" for demo purposes only
-		new SpringApplicationBuilder(Application.class).properties(
-				"security.user.password=password").run(args);
+		new SpringApplicationBuilder(Application.class).run(args);
 	}
 
-	/*@Override
-	public void addViewControllers(ViewControllerRegistry registry) {
-		registry.addViewController("/login").setViewName("login");
-	}*/
+
+	@Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(Application.class);
+    }
 }
