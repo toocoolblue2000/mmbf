@@ -16,27 +16,20 @@ public class ApplicationConfig extends WebMvcConfigurerAdapter {
 
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
-		registry.addRedirectViewController("/", "home");
+//		registry.addRedirectViewController("/", "home");
 		registry.addViewController("/home").setViewName("home");
-		registry.addViewController("/hello").setViewName("hello");
 		registry.addViewController("/login").setViewName("login");
+		registry.addViewController("/error").setViewName("error");
+		registry.addViewController("/admin").setViewName("admin");
 	}
 
-	/*@Bean
-    public ViewResolver viewResolver() {
-        FreeMarkerViewResolver resolver = new FreeMarkerViewResolver();
-        resolver.setCache(true);
-        resolver.setPrefix("");
-        resolver.setSuffix(".ftl");
-        resolver.setContentType("text/html; charset=UTF-8");
-        return resolver;
-    }*/
 
     @Bean
     public FreeMarkerConfigurer freemarkerConfig() throws IOException, TemplateException {
         FreeMarkerConfigurationFactory factory = new FreeMarkerConfigurationFactory();
-        factory.setTemplateLoaderPath("/templates");
+        factory.setTemplateLoaderPaths(new String[]{"classpath:org/springframework/web/servlet/view/freemarker/", "classpath:/templates/", "/templates"});
         factory.setDefaultEncoding("UTF-8");
+        factory.setPreferFileSystemAccess(false);
         FreeMarkerConfigurer result = new FreeMarkerConfigurer();
         result.setConfiguration(factory.createConfiguration());
         return result;
