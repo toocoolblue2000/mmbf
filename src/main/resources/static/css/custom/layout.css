@@ -1,25 +1,12 @@
-header, footer {
-    padding: 1em;
-    color: white;
-    background-color: black;
-    clear: left;
-    text-align: center;
+nav.navbar{
+  background-color:#ccc;
+   // Animation
+   -webkit-transition: all 0.4s ease;
+   transition: all 0.4s ease;
 }
 
-nav {
-    float: left;
-    max-width: 160px;
-    margin: 0;
-    padding: 1em;
-}
-
-nav ul {
-    list-style-type: none;
-    padding: 0;
-}
-   
-nav ul a {
-    text-decoration: none;
+nav.navbar.shrink {
+  min-height: 35px;
 }
 
 article {

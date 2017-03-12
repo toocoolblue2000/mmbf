@@ -60,13 +60,10 @@ implements AuthenticationSuccessHandler {
             HttpServletResponse response, Authentication authentication)
             throws IOException, ServletException {
         Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
-        if (roles.contains("ADMIN")){
-            redirectStrategy.sendRedirect(request, response, "/Admin");
-//            response.sendRedirect("/Admin");
+        if (roles.contains("ROLE_ADMIN")){
+            redirectStrategy.sendRedirect(request, response, "/admin");
             return;
         }
         redirectStrategy.sendRedirect(request, response, "/home");
-//        response.sendRedirect("/home");
-
     }
 }

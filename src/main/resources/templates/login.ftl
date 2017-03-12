@@ -1,14 +1,8 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
-<title>MMBF Loan Star - Login</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="css/bootstrap.css" />
-<link rel="stylesheet" href="css/custom/login.css">
-<script src="js/jquery.js" type="text/javascript"></script>
-<script src="js/bootstrap.js" type="text/javascript"></script>
-<#import "/spring.ftl" as spring/>
+	<title>MMBF Loan Star - Login</title>
+	<#include "/layout/imports.ftl" />
 </head>
 <body onload="document.loginForm.username.focus();">
 
@@ -16,7 +10,7 @@
 
 	<div class="container">
 
-		<form class="form-signin" name="loginForm" action="/loanstar/login" method="post">
+		<form class="form-signin" name="loginForm" action="<@spring.url '/login' />" method="post">
 			<h1 class="form-signin-heading text-muted">Sign In</h1>
 			<#if RequestParameters.error??>
 				<div class="alert alert-danger" align="center">
