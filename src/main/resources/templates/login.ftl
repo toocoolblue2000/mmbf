@@ -3,6 +3,7 @@
 <head>
 	<title>MMBF Loan Star - Login</title>
 	<#include "/layout/imports.ftl" />
+	<link rel="stylesheet" href="css/custom/login.css">
 </head>
 <body onload="document.loginForm.username.focus();">
 

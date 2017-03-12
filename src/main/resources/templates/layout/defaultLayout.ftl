@@ -4,6 +4,18 @@
 <head>
 	<title>MMBF Loan Star - ${title}</title>
 	<#include "/layout/imports.ftl" />
+	<link rel="stylesheet" href="css/custom/layout.css">
+	<script>
+	$(window).scroll(function() {
+	  if ($(document).scrollTop() > 50) {
+	    $('nav').addClass('shrink');
+	    $('#logoutButton').addClass('btn-sm');
+	  } else {
+	    $('nav').removeClass('shrink');
+	    $('#logoutButton').removeClass('btn-sm');
+	  }
+	});
+	</script>
 </head>
 <body>
 	<div class="container">

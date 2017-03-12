@@ -1,16 +1,17 @@
 <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="<@spring.url '/home' />">Loanstar</a>
+      <a class="navbar-brand" href="<@spring.url '/home' />">
+      <#--<img src="<@spring.url '/img/MMBF_Icon.png' />" class="nav-logo" alt="Loanstar">-->
+      <strong>Loan</strong>star</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
         <li class="dropdown">
@@ -30,7 +31,7 @@
         <li><a href="#">Nithin, Nivas</a></li>
         <li class="active">
         	<form name="logoutForm" class="navbar-form pull-right" action="<@spring.url '/logout' />" method="post">
-				<button type=submit href="#" class="btn btn-primary btn-success">Logout <span class="glyphicon glyphicon-log-out"></span></button>
+				<button id='logoutButton' type=submit href="#" class="btn btn-success">Logout <span class="glyphicon glyphicon-log-out"></span></button>
 			</form>
 		</li>
       </ul>
