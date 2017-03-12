@@ -16,6 +16,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.web.DefaultRedirectStrategy;
+import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 @Configuration
@@ -24,16 +26,18 @@ public class ApplicationSecurity
 extends WebSecurityConfigurerAdapter
 implements AuthenticationSuccessHandler {
 
+    private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 		.csrf().disable()
         .authorizeRequests()
-            .antMatchers("/", "/resources/**").permitAll()
+            .antMatchers("/resources/**").permitAll()
             .anyRequest().authenticated()
             .and()
         .formLogin()
-            .loginPage("/login")
+            .loginPage("/login").successHandler(this)
             .permitAll()
             .and()
         .logout()
@@ -57,9 +61,12 @@ implements AuthenticationSuccessHandler {
             throws IOException, ServletException {
         Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
         if (roles.contains("ADMIN")){
-            response.sendRedirect("/Admin");
+            redirectStrategy.sendRedirect(request, response, "/Admin");
+//            response.sendRedirect("/Admin");
             return;
         }
-        response.sendRedirect("/home");
+        redirectStrategy.sendRedirect(request, response, "/home");
+//        response.sendRedirect("/home");
+
     }
 }
