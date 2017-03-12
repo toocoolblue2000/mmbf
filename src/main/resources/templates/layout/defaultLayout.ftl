@@ -13,7 +13,7 @@
 		<article>
 		  <#nested/>
 		</article>
-		<footer class="footer navbar-fixed-bottom">
+		<footer class="footer navbar-default navbar-fixed-bottom">
 			<#include "footer.ftl"/>
 		</footer>
 	</div>
