@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -16,6 +18,9 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
@@ -26,7 +31,8 @@ public class ApplicationSecurity
 extends WebSecurityConfigurerAdapter
 implements AuthenticationSuccessHandler {
 
-    private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
+    @Autowired
+    private UserDetailsService userService;
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -56,15 +62,35 @@ implements AuthenticationSuccessHandler {
             throws IOException, ServletException {
         Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
         if (roles.contains("ROLE_ADMIN")){
-            redirectStrategy.sendRedirect(request, response, "/admin");
+        	getRedirectStrategy().sendRedirect(request, response, "/admin");
             return;
         }
-        redirectStrategy.sendRedirect(request, response, "/home");
+        getRedirectStrategy().sendRedirect(request, response, "/home");
     }
 
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication().withUser("user").password("password").roles("USER");
-		auth.inMemoryAuthentication().withUser("admin").password("password").roles("USER", "ADMIN");
+		auth.authenticationProvider(authProvider());
+//		auth.userDetailsService(userService);
+//		auth.inMemoryAuthentication().withUser("user").password("password").roles("USER");
+//		auth.inMemoryAuthentication().withUser("admin").password("password").roles("USER", "ADMIN");
+	}
+
+	@Bean
+	public DaoAuthenticationProvider authProvider() {
+	    DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+	    authProvider.setUserDetailsService(userService);
+	    authProvider.setPasswordEncoder(getPasswordEncoder());
+	    return authProvider;
+	}
+
+	@Bean
+	public RedirectStrategy getRedirectStrategy(){
+		return new DefaultRedirectStrategy();
+	}
+
+	@Bean
+	public PasswordEncoder getPasswordEncoder() {
+		return new BCryptPasswordEncoder();
 	}
 }
