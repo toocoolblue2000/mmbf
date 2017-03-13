@@ -49,11 +49,6 @@ implements AuthenticationSuccessHandler {
 	  web.ignoring().antMatchers("/js/**", "/css/**", "/img/**", "favicon.ico");
 	}
 
-	@Autowired
-	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication().withUser("user").password("password").roles("USER");
-		auth.inMemoryAuthentication().withUser("admin").password("password").roles("USER", "ADMIN");
-	}
 
 	@Override
     public void onAuthenticationSuccess(HttpServletRequest request,
@@ -66,4 +61,10 @@ implements AuthenticationSuccessHandler {
         }
         redirectStrategy.sendRedirect(request, response, "/home");
     }
+
+	@Autowired
+	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+		auth.inMemoryAuthentication().withUser("user").password("password").roles("USER");
+		auth.inMemoryAuthentication().withUser("admin").password("password").roles("USER", "ADMIN");
+	}
 }

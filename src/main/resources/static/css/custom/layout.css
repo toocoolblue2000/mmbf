@@ -4,36 +4,32 @@ body {
 }
 
 nav a {
-  padding-top: 20px !important;
-  padding-bottom: 20px !important;
-  font-size: 18px;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+  font-size: 15px;
+}
+
+nav.shrink a {
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+  font-size: 13px;
 }
 
 nav .navbar-toggle {
   margin: 13px 15px 13px 0;
 }
 
-.navbar-brand {
-  font-size: 30px;
-}
-
-nav.navbar.shrink {
-  min-height: 35px;
-}
-
-nav.shrink a {
-  padding-top: 10px !important;
-  padding-bottom: 10px !important;
-  font-size: 15px;
-}
-
-nav.shrink .navbar-brand {
-  font-size: 25px;
-}
-
 nav.shrink .navbar-toggle {
   padding: 4px 5px;
   margin: 8px 15px 8px 0;
+}
+
+.navbar-brand {
+  font-size: 25px;
+}
+
+nav.shrink .navbar-brand {
+  font-size: 20px;
 }
 
 nav.shrink .btn {
