@@ -1,18 +1,12 @@
 <div class="container">
-	<div class="navbar-header">
-		<button type="button" class="navbar-toggle" data-toggle="collapse"
-			data-target=".navbar-collapse">
-			<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-				class="icon-bar"></span>
-		</button>
-		<a class="navbar-brand" href="<@spring.url '/home' />"> <strong>Loan</strong>star
-		</a>
-	</div>
-	<div id="navbar" class="navbar-collapse collapse">
-		<ul class="nav navbar-nav">
-			<li class="dropdown"><a href="#" class="dropdown-toggle"
-				data-toggle="dropdown" role="button" aria-haspopup="true"
-				aria-expanded="false">Entry <span class="caret"></span></a>
+	<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+	<a class="navbar-brand" href="<@spring.url '/home' />"> <strong>Loan</strong>star</a>
+	<div class="collapse navbar-collapse" id="navbarNav1">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item dropdown btn-group">
+			<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Entry <span class="caret"></span></a>
 				<ul class="dropdown-menu">
 					<li><a href="#">Pawn Ticket</a></li>
 					<li><a href="#">Loan Receipt</a></li>

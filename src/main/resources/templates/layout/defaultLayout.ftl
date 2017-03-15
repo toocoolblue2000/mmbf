@@ -1,25 +1,14 @@
 <#macro pagelayout title="LoanStar Title">
 <!doctype html>
-<html>
+<html lang="en">
 <head>
 	<title>MMBF Loan Star - ${title}</title>
 	<#include "/layout/imports.ftl" />
 	<link rel="stylesheet" href="css/custom/layout.css">
-	<script>
-	$(window).scroll(function() {
-	  if ($(document).scrollTop() > 50) {
-	    $('nav').addClass('shrink');
-	    $('#logoutButton').addClass('btn-sm');
-	  } else {
-	    $('nav').removeClass('shrink');
-	    $('#logoutButton').removeClass('btn-sm');
-	  }
-	});
-	</script>
 </head>
 <body>
 	<div class="container">
-		<nav class="navbar navbar-default navbar-fixed-top">
+		<nav class="navbar navbar-fixed-top navbar-dark bg-primary">
 		  <#include "nav.ftl"/>
 		</nav>
 		<article>

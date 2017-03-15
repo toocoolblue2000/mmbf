@@ -52,7 +52,7 @@ implements AuthenticationSuccessHandler {
 
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-	  web.ignoring().antMatchers("/js/**", "/css/**", "/img/**", "favicon.ico");
+	  web.ignoring().antMatchers("/js/**", "/css/**", "/img/**", "/fonts/**", "/sass/**", "favicon.ico");
 	}
 
 

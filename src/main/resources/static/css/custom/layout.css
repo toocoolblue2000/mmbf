@@ -1,9 +1,9 @@
 body {
-	padding-top: 50px;
+	padding-top: 80px;
 	padding-bottom: 60px;
 }
 
-nav a {
+/* nav a {
   padding-top: 10px !important;
   padding-bottom: 10px !important;
   font-size: 15px;
@@ -34,5 +34,5 @@ nav.shrink .navbar-brand {
 
 nav.shrink .btn {
   font-size: 12px;
-}
+} */
 
