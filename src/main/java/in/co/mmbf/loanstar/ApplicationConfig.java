@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.ui.freemarker.FreeMarkerConfigurationFactory;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -12,6 +13,7 @@ import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import freemarker.template.TemplateException;
 
 @Configuration
+@EnableScheduling
 public class ApplicationConfig extends WebMvcConfigurerAdapter {
 
 	@Override
