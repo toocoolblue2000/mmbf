@@ -56,6 +56,7 @@
 			<li><a href="#">Nithin, Nivas</a></li>
 			<li class="active">
 				<form name="logoutForm" class="navbar-form pull-right" action="<@spring.url '/logout' />" method="post">
+					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 					<button id='logoutButton' type=submit href="#" class="btn btn-success">
 						Logout <span class="glyphicon glyphicon-log-out"></span>
 					</button>

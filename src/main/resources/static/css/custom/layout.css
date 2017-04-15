@@ -3,6 +3,10 @@ body {
 	padding-bottom: 60px;
 }
 
+.logo-bg {
+	background-image: url("../../img/MMBF_Quoted_alpha.png");
+}
+
 /* nav a {
   padding-top: 10px !important;
   padding-bottom: 10px !important;

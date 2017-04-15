@@ -37,7 +37,6 @@ implements AuthenticationSuccessHandler {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
-		.csrf().disable()
         .authorizeRequests()
             .antMatchers("/resources/**").permitAll()
             .anyRequest().authenticated()
@@ -47,7 +46,9 @@ implements AuthenticationSuccessHandler {
             .permitAll()
             .and()
         .logout()
-            .permitAll();
+            .permitAll()
+            .and()
+        .csrf();
 	}
 
 	@Override
