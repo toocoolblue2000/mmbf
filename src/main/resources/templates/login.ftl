@@ -13,6 +13,7 @@
 
 		<form name="loginForm" action="<@spring.url '/login' />" method="post" class="col-md-offset-2 col-md-8">
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+			<div class="logo-white-trans"></div>
 			<h1 class="white-text">Sign In</h1>
 			<#if RequestParameters.error??>
 				<div class="alert alert-danger alert-dismissable" align="center">

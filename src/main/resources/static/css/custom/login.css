@@ -17,3 +17,12 @@ body {
 	background-repeat: repeat;
 	z-index: -1;
 }
+
+.logo-white-trans {
+	height:60px;
+	background-image:
+		url('../../img/Loanstar_white.png');
+	background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
